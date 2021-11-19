@@ -4,7 +4,7 @@ from .models import NotePost
 
 class PostForm(ModelForm):
 
-    #is_good_day = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    ##is_good_day = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     class Meta: 
         model = NotePost
