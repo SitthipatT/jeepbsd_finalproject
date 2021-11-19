@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+    #xsx{
+      margin-left: 10%
+    }
+  
+  </style>
+
+{% if user.is_authenticated %}
+
+      <br><br>
+      <button id="xsx" class="btn btn-secondary a-btn-slide-text" onclick="history.back()">Cancel</button>
+        <form id="xsx" method="POST">
+            {% csrf_token %}
+            <h3>Are you sure you want to delete the note number: "{{ notepost.pk }}"?</h3> <br>
+            <button class="btn btn-danger" name="cancel" value="Cancel">Delete</button>
+        </form>
+
+{% else %}
+    <h2>You need to login first</h2>
+
+{% endif %}
+
+{% endblock %}

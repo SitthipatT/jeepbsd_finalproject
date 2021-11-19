@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+<style>
+  #xsx{
+    margin-left: 10%;
+    width:50%;
+  }
+
+  #xsxd{
+    margin-left: 10%;
+
+  }
+
+</style>
+{% if user.is_authenticated %}
+<br>
+
+    <button id="xsxd" class="btn btn-secondary a-btn-slide-text" onclick="location.href = '../manage';">Cancel</button>
+        <br><br>
+        <h2 id="xsx">New Note</h2>
+    <div class="form-group">
+    <form id="xsx" action ="" method="post">
+        <p><br>
+        {% csrf_token %}
+        How is the day?
+        {{form.is_good_day}}
+        <br><br>Describe your day here
+        {{form.reason}}
+        </p>
+        <input type="submit" class="btn btn-success" value="New Note">
+    </form>
+</div>
+
+  <!-- <button id="xsx" class="btn btn-secondary a-btn-slide-text" onclick="location.href = '../manage';">Cancel</button>
+    <br><br>
+
+    <form id = xsx class="form-horizontal" method="post">{% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+                {% if field.errors %}
+                    <div class="control-group error">
+                        <label class="control-label">{{ field.label }}</label> 
+                        <div class="controls">{{ field }}
+                            <span class="help-inline">
+                                {% for error in  field.errors %}{{ error }}{% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="control-group">
+                        <label class="control-label">{{ field.label }}</label> 
+                        <div class="controls">{{ field }}
+                            {% if field.help_text %}
+                                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </fieldset>
+        <br>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success" >Add Note</button>
+        </div>
+    </form>--> 
+{% else %}
+    <h2>You need to login first</h2>
+
+{% endif %}
+
+    <!--<form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button>Post</button>
+    </form>-->
+  
+  
+  {% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  <style>
+    .footer,.footer-bottom{
+      padding-bottom: 15px;
+    }
+    .form-control{
+      width: 50%;
+    }
+
+    .col-sm-8{
+      background-color:rgba(243, 211, 211, 0.952);
+      margin-left:20px;
+      width:45%;
+
+    }
+
+    .input-container input {
+    border: none;
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+    width: 100%;
+    
+}
+    .input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    
+}
+
+  #down1{
+    background-color: rgba(226, 142, 64, 0.747);
+  }
+
+
+  </style>
+        <div class="container">
+          <div class="jumbotron">
+            <h2>Instruction to Fortune Compare</h2>
+            <br>
+            <p>User can pick 2 birthdates to compare and find which date has higher rank during 2020-2022. 
+              <br><br>The formula is a comparison of sum of ranks in 3 years.</p>
+            <a href="../static/luckyday dataset.xlsx">Download here</a> for referenced data.
+
+          </div>
+          <div class="container" id="boxx">
+           
+              <div class="col-sm-8 img-rounded">
+                <br>
+                
+                <h4>Input 1st Person Birthdate</h4>
+                  <input id="desti1" class="form-control" type="date">
+                  <b>2022 Rank:</b> <span id="xd1"></span><br>
+                  <b>2021 Rank:</b> <span id="xd2"></span><br>
+                  <b>2020 Rank:</b> <span id="xd3"></span><br>
+                  <b>Total Score:</b> <span id="total1"></span><br>
+                  <br>
+                </div>
+            
+            
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-8 img-rounded" id = "down1">  
+                        <br>          
+                  <h4>Input 2nd Person Birthdate</h4>
+                  <input id="desti2" class="form-control" type="date">
+                  <b>2022 Rank:</b> <span id="xd4"></span><br>
+                  <b>2021 Rank:</b> <span id="xd5"></span><br>
+                  <b>2020 Rank:</b> <span id="xd6"></span><br>
+                  <b>Total Score:</b> <span id="total2"></span><br>
+
+                  </form>
+                <br>
+                
+              </div>
+              <br>
+              
+              
+          </div>
+          <br>
+          <button type='button' onclick='comPare()' class="btn btn-primary btn-lg" id="cl1">Check Result</button>
+          &nbsp;<span id="result1"></span>
+        </div>
+        
+      </div>
+
+<script>
+
+  function comPare(){  
+    var rnk = [
+      {% for item in data %}
+        {{ item.rnk }},
+      {% endfor %}
+    ]
+
+    var datex = [
+      {% for item in data %}
+        '{{ item.datex }}',
+      {% endfor %}
+    ]
+
+    var i = 0;
+    var j = 0;
+    var k = 0;
+    var d1 = 1095;
+    var d2 = 1095;
+    var xd = [];
+    var dx = [];
+
+    while(i < 1095){
+
+      date1 = document.getElementById('desti1').value;
+      date2 = document.getElementById('desti2').value;
+
+      date1x = date1.substr(4);
+      date2x = date2.substr(4);
+      
+      if (datex[i].substr(4) == date1x)
+      {
+        d1 = d1 - rnk[i];
+        xd[j] = rnk[i];
+        j = j+1;
+        
+      }
+
+      if (datex[i].substr(4) == date2x)
+      {
+        d2 = d2 - rnk[i];
+        dx[k] = rnk[i];
+        k = k+1;
+
+      }
+  
+      i++;
+      
+    }
+
+    if (d1 > d2) {
+      document.getElementById('result1').innerHTML = date1 + ' (1st Person) wins over ' + date2;
+    }
+    else if (d1 < d2) {
+      document.getElementById('result1').innerHTML = date2 + ' (2nd Person) wins over ' + date1;
+    }
+    else document.getElementById('result1').innerHTML = 'Both ' + date1 + ' and ' + date2 + ' are the winners!';
+    
+    document.getElementById('total1').innerHTML = d1;
+    document.getElementById('total2').innerHTML = d2;
+
+    document.getElementById('xd1').innerHTML = xd[0];
+    document.getElementById('xd2').innerHTML = xd[1];
+    document.getElementById('xd3').innerHTML = xd[2];
+    document.getElementById('xd4').innerHTML = dx[0];
+    document.getElementById('xd5').innerHTML = dx[1];
+    document.getElementById('xd6').innerHTML = dx[2];
+
+  }
+
+</script>
+
+
+{% else %}
+    <h2>You need to login first</h2>
+
+{% endif %}
+
+{% endblock content %}

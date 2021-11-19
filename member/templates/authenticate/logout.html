@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+<style>
+  #xsx{
+    margin-left: 10%
+  }
+
+</style>
+
+<br><h2><div id="xsx" >You have successfully logged out!</div></h2>
+
+
+<script>
+    function redirect(){
+       window.location.href = "../home";
+    }
+
+    setTimeout(redirect, 2000); //2000 is equivalent to 2 seconds
+</script>
+
+  
+  {% endblock %}

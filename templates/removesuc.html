@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+    #xsx{
+      margin-left: 10%
+    }
+  
+  </style>
+
+{% if user.is_authenticated %}
+    <br><br><br>
+    <h3 id="xsx">Deleted successfully</h3> <br>
+    <a id="xsx" href="{% url 'manage' %}"><button id="btnc" type="button" class="btn btn-secondary a-btn-slide-text margin-left">
+    <span aria-hidden="true"></span>Back</button></a>
+
+{% else %}
+    <h2>You need to login first</h2>
+
+{% endif %}
+
+{% endblock %}

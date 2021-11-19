@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  #xsx{
+    margin-left: 10%;
+    width:50%;
+  }
+
+  
+
+
+</style>
+
+<div id="xsx">
+  <h3 class="form-signin">Register</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <br>
+    {{ form.as_p }}
+    <button class="btn btn-primary">Register</button>
+  </form>
+
+</div>
+
+
+
+{% endblock %}

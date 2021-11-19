@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+  <style>
+    .carousel-inner {
+      display: block;
+      height: 40rem;
+      max-width: 100%;
+      line-height: 0;
+      margin:auto;
+      width: 100%;
+      object-fit: cover;
+      top:-20px;
+    }
+    .footer,.footer-bottom{
+      padding-bottom: 15px;
+
+    }
+     
+  </style>
+  
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      </ol>
+      
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="../static/images/home1.jfif" style="width: 100%">
+        </div>
+        <div class="item">
+          <img src="../static/images/home2.jfif" style="width: 100%">
+        </div>
+        <div class="item">
+          <img src="../static/images/home3.jfif" style="width: 100%">
+        </div>
+        <div class="item">
+          <img src="../static/images/home4.jfif" style="width: 100%">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 widget">
+                <h2>Find Your Birthday Rank</h2>
+                  <article class="widget_content">
+                    The website helps you find your fortune rank from your birthdate. You may find your rank different in each year based on the gathered day since 2020 up to 2022.
+                    <br><br>
+                      <ul>
+                          <li>Search for your birthdate rank for desired year.</li>
+                          <li>Members gain an access to Fortune Fight.</li>
+                          <li>Register for Free !</li>
+                         
+                   </ul>
+                   <a href="../about"><br>Learn more about available source data</a>
+                   </article>
+          </div>
+              <div class="col-md-3 widget">
+                <h2>Link</h2>
+                  <article class="widget_content">
+                      <ul>
+                          <li><a href="https://www.facebook.com/">Facebook</a></li>
+                          <li><a href="https://www.twitter.com/">Twitter</a></li>
+                          <li><a href="https://www.instagram.com/">Instagram</a></li>
+                   </ul>
+                   </article>
+          </div>
+              <div class="col-md-4 widget">
+                  <h2>Contact Us</h2>
+                  <article class="widget_content">
+                      <p>Sitthipat Tangpaisalkij<br> 65/124 Nue Noble Chaengwattana, <br>Nonthaburi<br>Phone: 0814538807</p>
+                  </article>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <div class="container">
+          <div class="row">
+          <div class="col-md-12 widget">© 2021 | Created with Boostrap 3.4
+              </div>
+          </div>
+      </div>
+  </div>
+      <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="#">Sitthipat Tangpaisalkij</a></p></section>
+{% endblock content %}

@@ -1,0 +1,36 @@
+<!-- templates/login.html -->
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .container{
+    width:300px;
+  }
+</style>
+
+{% for message in messages %}
+    
+    <div class="alert alert-danger">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+           {{ message }}
+    </div>
+
+{% endfor %}
+          <div class="container">
+            <form action="" method=POST>
+              {% csrf_token %}
+              <h3 class="form-signin">Login</h3>
+              <label for="inputUsername" class="sr-only">Username</label>
+              <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+              <br>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Password" required="">
+              <br>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+              <br>
+        
+      
+          </div> <!-- /container -->
+        </form>     
+      
+
+{% endblock content %}

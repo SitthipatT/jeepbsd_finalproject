@@ -1,0 +1,36 @@
+<!-- templates/manage_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<style>
+    #xsx{
+      margin-left: 10%;
+    }
+    .list-group{
+        margin-left: 10%;
+        margin-right:50%;
+    }
+    .list-group-item{
+      margin-top:20px;
+    }
+
+  </style>
+
+<br>
+      <button id="xsx" class="btn btn-secondary a-btn-slide-text" onclick="location.href = '/../manage';">Back</button>
+
+      
+    <div class = "list-group">
+      
+        <li class="list-group-item"><h3>Note Number</h3>{{ notepost.id }}<br><br></li>
+        <li class="list-group-item"><h3>How is your day?</h3>{{ notepost.get_is_good_day_display }}<br><br></li>
+        <li class="list-group-item"><h3>Describe your day</h3>{{ notepost.reason }}<br><br></li>
+        <li class="list-group-item"><h3>Date Recorded</h3>{{ notepost.date_rec }}<br><br></li>
+    </div>
+
+    {% else %}
+    <h2>You need to login first</h2>
+    {% endif %}
+
+{% endblock content %}

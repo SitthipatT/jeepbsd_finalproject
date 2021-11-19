@@ -1,0 +1,178 @@
+<!-- templates/manage.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style> 
+
+  .titles {
+    float: right;
+    clear: both;
+  }
+  
+  .table-striped{
+      width:70%;
+  }
+  .nav-link{
+      border-radius: 5px;
+      overflow:hidden;
+  }
+  #ddd{
+      width:20%;
+  }
+  
+  #d1{
+      width:80%;
+      margin-left:10%;
+      position:relative;
+  }
+  
+  #xsx{
+      margin-left: 10%;
+  }
+  
+  .margin-left{
+      margin-left: 10px !important;
+  }
+  
+  #btnClear{
+      display: inline-block;
+  }
+  
+  
+  </style>
+
+{% if user.is_authenticated %}
+        <br>
+        <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+
+      <a id="xsx" href="{% url 'add_dis' %}" class="btn btn-success a-btn-slide-text">
+        New Note
+      </a>
+  
+  <div id="d1">
+    <br><h2>Manage Your Notes</h2>
+      <table class="table table-bordered table-sortable"
+      data-toggle="table"
+      data-search="true"
+      data-sortable="true"
+      data-show-columns="true"
+      data-pagination="true">
+          <thead>
+              <th data-sortable="true" scope="col">Note Number</th>
+              <th data-sortable="true" scope="col">How is the day?</th>
+              <th data-sortable="true" scope="col">Describe the day</th>
+              <th data-sortable="true" scope="col">Date Recorded</th>
+              <th data-sortable="true" scope="col">Option</th>
+          </thead>
+          <tbody>
+
+    {% for NotePost in object_list %}
+        <tr> 
+            <td>{{ NotePost.id }}</td>
+            <td>{{ NotePost.get_is_good_day_display }}</td>
+            <td>{{ NotePost.reason }}</td>
+            <td>{{ NotePost.date_rec|date:'Y-m-d' }}</td>
+            <td class="text-center">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span><a href="{% url 'manage_detail' NotePost.id %}"> Info</a>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><a href="{% url 'edit_dis' NotePost.id %}"> Edit</a>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><a href="{% url 'delete_dis' NotePost.id %}"> Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+  </table>
+  </div>
+
+{% else %}
+  <h2>You need to login first</h2>
+
+{% endif %}
+
+  {% endblock content %}
+
+<!--
+<style> 
+
+.titles {
+  float: right;
+  clear: both;
+}
+
+.table-striped{
+    width:70%;
+}
+.nav-link{
+    border-radius: 5px;
+    overflow:hidden;
+}
+#ddd{
+    width:20%;
+}
+
+#d1{
+    width:80%;
+    margin-left:10%;
+    position:relative;
+}
+
+#xsx{
+    margin-left: 10%;
+}
+
+.margin-left{
+    margin-left: 10px !important;
+}
+
+#btnClear{
+    display: inline-block;
+}
+
+
+</style>
+
+<a id="xsx" href="{% url 'add_dis' %}" class="btn btn-success a-btn-slide-text">
+    New Note
+</a>
+
+      <br>
+
+      <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+
+      <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+
+<div id="d1">
+    <table 
+    data-toggle="table"
+    data-height="700"
+    data-search="true"
+    data-show-columns="true">
+        <thead>
+            <th scope="col">Note Number</th>
+            <th scope="col">How is your day?</th>
+            <th scope="col">Describe your day</th>
+            <th scope="col">Date Recorded</th>
+            <th scope="col">Option</th>
+        </thead>
+        <tbody>
+
+    {% for NotePost in object_list %}
+        <tr> 
+            <td><a href="../manage_detail/{{ NotePost.id }}">{{ NotePost.id }}</a></td>
+            <td><a href="../manage_detail/{{ NotePost.id }}">{{ NotePost.is_good_day }}</a></td>
+            <td><a href="../manage_detail/{{ NotePost.id }}">{{ NotePost.reason }}</a></td>
+            <td><a href="../manage_detail/{{ NotePost.id }}">{{ NotePost.datex|date:'Y-m-d' }}</a></td>            
+            <td class="text-center">
+
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span><a href="{% url 'manage_detail' NotePost.id %}"> Info</a>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><a href="{% url 'edit_dis' NotePost.id %}"> Edit</a>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><a href="{% url 'delete_dis' NotePost.id %}"> Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+</div>
+{{ dis_lists }}
+
+-->
